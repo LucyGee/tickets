@@ -74,7 +74,7 @@
 							<div class="venue-details-info">
 							<h3>Venue & Event Information</h3>
 								<p>Venue: <?php echo $makeOrder[0]["event_venue"]?></p>
-								<p>From: <span><?php echo $makeOrder[0]["event_date"];?></span></p>
+								<p>From: <span id="start_date"><?php echo $makeOrder[0]["event_date"];?></span></p>
                               	<p>To: <span><?php echo $makeOrder[0]["end_date"];?></span></p>
 							</div>
 						</div>
@@ -108,6 +108,7 @@
 												<th style="padding:0 22px 5px;">Ticket</th>
 												<th style="padding:0 22px 5px;">Unit Cost</th>
 												<th style="padding:0 22px 5px;">Quantity</th>
+												<th style="padding:0 22px 5px;">Attendance Date</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -145,6 +146,9 @@
 												  ?>
 												</select>
 												<?php endif ?>	
+											</td>
+											<td>
+												<input type="date" name="date" id="date" value="<?php echo $makeOrder[0]["event_date"];?>" class="form-control required" placeholder="attendance date">
 											</td>
 										</tr>
 										<?php  
@@ -223,6 +227,29 @@
 
 
 <script>
+ $(function () {
+    $( "$makeOrder[0]["event_date"]" ).(
+    {
+        minDate: new Date(),
+        changeMonth: true,
+        numberOfMonths: 1,
+        onClose: function( selectedDate )
+        {
+            $( "$makeOrder[0]["end_date"]" ).datepicker( "option", "minDate", selectedDate );
+        }
+    });
+
+    $( "$makeOrder[0]["end_date"]" ).datepicker(
+    {
+        minDate: new Date(),
+        changeMonth: true,
+        numberOfMonths: 1,
+        onClose: function( selectedDate )
+        {
+            $( "$makeOrder[0]["event_date"]" ).datepicker( "option", "maxDate", selectedDate );
+        }
+    });
+
 var count = <?php echo $count?>;
 function myPrice() {
 	var tickets = []
@@ -268,4 +295,5 @@ function myPrice() {
 // 	}
 
 // }
+ })();
 </script>
