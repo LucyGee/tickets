@@ -67,7 +67,7 @@ class Asset_model extends CI_Model{
 	{
 		$this->db->where('order_id', $id);
 		$this->db->select('events.id, events.event_title, events.event_venue, events.event_coodinates, events.event_date, sell_ticket.number_of_tickets, sell_ticket.ticket_amount, sell_ticket.ticket_type, sell_ticket.clientName, sell_ticket.phone,
-						sell_ticket.email, sell_ticket.order_id, sell_ticket.serial_number, sell_ticket.used_status, sell_ticket.transaction_status');
+						sell_ticket.email, sell_ticket.order_id, sell_ticket.serial_number, sell_ticket.used_status, sell_ticket.transaction_status, sell_ticket.attendance_date');
 		$this->db->from('sell_ticket');
 		$this->db->join('events', 'sell_ticket.event_id = events.id');
 		$query = $this->db->get();

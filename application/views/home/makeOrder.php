@@ -149,8 +149,9 @@
 											</td>
 											<td>
 												<input type="date" name="date" id="date" value="<?php echo $makeOrder[0]["event_date"];?>" class="form-control required" placeholder="attendance date">
-											</td>
-										</tr>
+												
+											</td>				
+										</tr>       
 										<?php  
 										}
 										?>
@@ -227,28 +228,7 @@
 
 
 <script>
- $(function () {
-    $( "$makeOrder[0]["event_date"]" ).(
-    {
-        minDate: new Date(),
-        changeMonth: true,
-        numberOfMonths: 1,
-        onClose: function( selectedDate )
-        {
-            $( "$makeOrder[0]["end_date"]" ).datepicker( "option", "minDate", selectedDate );
-        }
-    });
-
-    $( "$makeOrder[0]["end_date"]" ).datepicker(
-    {
-        minDate: new Date(),
-        changeMonth: true,
-        numberOfMonths: 1,
-        onClose: function( selectedDate )
-        {
-            $( "$makeOrder[0]["event_date"]" ).datepicker( "option", "maxDate", selectedDate );
-        }
-    });
+ 
 
 var count = <?php echo $count?>;
 function myPrice() {

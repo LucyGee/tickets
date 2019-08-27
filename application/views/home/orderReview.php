@@ -27,9 +27,15 @@
 											$tickets = 0;
 											foreach ($order as $key => $value) {
 												$tickets = $tickets  + $value['no_of_tickets'];
-											}
+											
 												 echo $tickets. " Ticket(s)";
 											?>
+										</font> for the date 
+										<font color="red"> 
+										<?php 
+										echo $_POST["date"];
+											}
+										?>
 										</font>
 									</h3>
 									

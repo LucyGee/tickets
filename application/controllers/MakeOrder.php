@@ -51,9 +51,14 @@ class MakeOrder extends CI_Controller {
 		$event_id = " ".$_SESSION['id']."";
 
 		//get post data
+		var_dump($_POST);
 		$sum = 0;
 		foreach ($_POST as $key => $value) {
-			$sum = ($sum + $value);
+			if (is_string($value)) {
+				$sum = ($sum + strtotime($value));
+			} else {
+			redirect('index.php/event?me='.$event_id, 'refresh');
+			}
 		}
 
 		if ($sum < 1) {
@@ -68,11 +73,12 @@ class MakeOrder extends CI_Controller {
 		foreach ($ticketType as $key => $value) {
 			$count++;
 			$ticket_count = $this->input->post($count);
-		
+			
 			$order = array('event_id' => $value['event_id'],
 							'no_of_tickets' => $ticket_count,
 							'ticket_name' => $value['ticket_type'],
-							'amount' => $value['amount']);
+							'amount' => $value['amount'],
+							);
 			
 			array_push($reviewOrder, $order);
 		}
