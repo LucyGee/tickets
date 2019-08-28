@@ -149,7 +149,7 @@
 											</td>
 											<td>
 												<input type="date" name="date" id="date" value="<?php echo $makeOrder[0]["event_date"];?>" class="form-control required" placeholder="attendance date">
-												
+										
 											</td>				
 										</tr>       
 										<?php  
@@ -184,6 +184,7 @@
 													</td>
 
 												<?php endif; ?>
+											
 											</tr>
 										</tfoot>
 									</table>
@@ -228,7 +229,21 @@
 
 
 <script>
- 
+function dateCheck() {
+        var fDate,lDate,cDate;
+        fDate = new Date($makeOrder[0]["event_date"]); 
+        cDate = new Date($('date').val()); // date from form
+        lDate = new Date($makeOrder[0]["end_date"]);
+        
+        
+        if(Date.parse(cDate) <= Date.parse(lDate) && Date.parse(cDate) >= Date.parse(fDate)){
+            alert("true");
+            return true;
+        }
+
+        alert("false");
+        return false;
+    } 
 
 var count = <?php echo $count?>;
 function myPrice() {

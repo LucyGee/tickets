@@ -51,7 +51,17 @@ class MakeOrder extends CI_Controller {
 		$event_id = " ".$_SESSION['id']."";
 
 		//get post data
-		var_dump($_POST);
+
+$date1 =$_POST["date"];
+//$date2 = date('Y-m-d' , strtotime($makeOrder[0]["event_date"]));
+//$date3 = date('Y-m-d' , strtotime($makeOrder[0]["end_date"]));
+//echo $date2;
+//echo $date3;
+echo $date1;
+//if((strtotime($date1) <= strtotime($date2)) && (strtotime($date1) >= strtotime($date3))){
+   // echo "Inside Range";
+//}else echo "Pick a day within the Range";
+
 		$sum = 0;
 		foreach ($_POST as $key => $value) {
 			if (is_string($value)) {
