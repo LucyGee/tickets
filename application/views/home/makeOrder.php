@@ -188,6 +188,8 @@
 											</tr>
 										</tfoot>
 									</table>
+									<input type="hidden" name="event_date" id="event_date" value="<?php echo $makeOrder[0]["event_date"];?>" class="form-control required" placeholder="event date">
+									<input type="hidden" name="end_date" id="end_date" value="<?php echo $makeOrder[0]["end_date"];?>" class="form-control required" placeholder="end date">	
 								</div>
 							</div>
 						</div>
@@ -229,22 +231,6 @@
 
 
 <script>
-function dateCheck() {
-        var fDate,lDate,cDate;
-        fDate = new Date($makeOrder[0]["event_date"]); 
-        cDate = new Date($('date').val()); // date from form
-        lDate = new Date($makeOrder[0]["end_date"]);
-        
-        
-        if(Date.parse(cDate) <= Date.parse(lDate) && Date.parse(cDate) >= Date.parse(fDate)){
-            alert("true");
-            return true;
-        }
-
-        alert("false");
-        return false;
-    } 
-
 var count = <?php echo $count?>;
 function myPrice() {
 	var tickets = []

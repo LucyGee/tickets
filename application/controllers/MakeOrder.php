@@ -53,16 +53,10 @@ class MakeOrder extends CI_Controller {
 		//get post data
 
 $date1 =$_POST["date"];
-//$date2 = date('Y-m-d' , strtotime($makeOrder[0]["event_date"]));
-//$date3 = date('Y-m-d' , strtotime($makeOrder[0]["end_date"]));
-//echo $date2;
-//echo $date3;
-echo $date1;
-//if((strtotime($date1) <= strtotime($date2)) && (strtotime($date1) >= strtotime($date3))){
-   // echo "Inside Range";
-//}else echo "Pick a day within the Range";
-
-		$sum = 0;
+$date2 = $_POST["event_date"];
+$date3 = $_POST["end_date"];
+if((strtotime($date1) >= strtotime($date2)) && (strtotime($date1) <= strtotime($date3))){
+   		$sum = 0;
 		foreach ($_POST as $key => $value) {
 			if (is_string($value)) {
 				$sum = ($sum + strtotime($value));
@@ -74,6 +68,11 @@ echo $date1;
 		if ($sum < 1) {
 			redirect('index.php/event?me='.$event_id, 'refresh');
 		}
+		
+}else {
+	echo '<script type="text/javascript">alert("Pick a Day within the range of the Event!");</script>';
+	redirect('index.php/event?me='.$event_id, 'refresh');
+}
 
 		//load model to get ticket types
 		$ticketType = $this->Asset_model->get_tickets_type($event_id);
