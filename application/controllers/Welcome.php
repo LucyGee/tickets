@@ -45,7 +45,7 @@ class Welcome extends CI_Controller {
 		if ($event_cat) {
 			$name1="UPCOMING EVENT:";
 			$name2= $event_cat[0]['category_name'];
-			$name= $name1.$name2;
+			$name= $name1.$name2;// concatenation in php
 		} else {
 			$name = "NO UPCOMING EVENT";
 		}
