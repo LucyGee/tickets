@@ -9,7 +9,7 @@
 						<h2>
 							<?php
 							if (empty($events)):
-								echo 'NO UPCOMING EVENTS'; 
+								echo 'NO UPCOMING EVENTS:'; 
 							else:
 								echo 'UPCOMING EVENTS';
 							endif;							

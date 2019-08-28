@@ -43,7 +43,9 @@ class Welcome extends CI_Controller {
 		$event_cat = $this->Front_page_model->event_by_category($id);
 		
 		if ($event_cat) {
-			$name = $event_cat[0]['category_name'];
+			$name1="UPCOMING EVENT:";
+			$name2= $event_cat[0]['category_name'];
+			$name= $name1.$name2;
 		} else {
 			$name = "NO UPCOMING EVENT";
 		}
