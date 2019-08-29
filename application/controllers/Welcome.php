@@ -5,13 +5,7 @@ class Welcome extends CI_Controller {
 	
 	public function index()
 	{
-		//$id = $this->input->get('me', TRUE);
-		//set id to session
-		//$data = array('id' => $id);
-		//$this->session->set_userdata($data);
-
-		//$ticket_close_on=$this->Asset_model->get_tickets_type($id);
-		//load model
+		
 		$homeScreen = array(
 			'homescreen' => $this->Asset_model->get_home(),
 			'thumbs' => $this->Asset_model->get_thumbs(),

@@ -95,105 +95,119 @@
 
 				<div class="row">
 				<div class="col-md-12">
-				<form method="post" action="reviewOrder" accept-charset="utf-8">
-					<div id="book-table" class="section-order-details-event-info">
-							<div class="seat-details">
-								<h3 class="event-title">Kindly indicate how many tickets you wish to reserve
-								</h3>
-								
-								<div class="seat-details-info" style="padding:5px 0px !important">
-									<table class="table number-tickets table table-striped">
-										<thead>
-											<tr>
-												<th style="padding:0 22px 5px;">Ticket</th>
-												<th style="padding:0 22px 5px;">Unit Cost</th>
-												<th style="padding:0 22px 5px;">Quantity</th>
-												<th style="padding:0 22px 5px;">Attendance Date</th>
-											</tr>
-										</thead>
-										<tbody>
-										<?php 
-										$count = 0;
-										foreach ($ticketType as $ticketTypes) {
-											$count++;
-											?>
-										<tr>
-											<td>
-												<?php echo($ticketTypes['type_name']);?>
-												<input type="hidden" name="" id="<?php echo "ticket_type".$count; ?>" value="<?php echo($ticketTypes['ticket_type']);?>">
-											</td>
-											<td>
-												<?php echo("Ksh. ".$ticketTypes['amount']);?>
-												<input type="hidden" name="" id="<?php echo "amount".$count; ?>" value="<?php echo($ticketTypes['amount']);?>">
-											</td>
-											<td>
-												<?php if ($ticketTypes['available_tickets'] < 1): ?> <!--check available tickets-->
-														<span class='label bg-danger'>SOLD OUT</span>
-												<?php elseif ($ticketTypes['ticket_close_on'] < date("Y-m-d")): ?> <!--check date closing-->
-														<span class='label bg-danger'>SOLD OUT</span>
-												<?php else: ?>	
-												<select name="<?php echo $count; ?>" id="<?php echo "select".$count; ?>" onchange="myPrice()">
-												  
-												  <?php 
-												  	$tickets_leng = 10;
-												  	if ($ticketTypes['available_tickets'] < 10) {
-												  		$tickets_leng = $ticketTypes['available_tickets'];
-												  	}
-												  	for ($i=1; $i <= $tickets_leng; $i++) { ?>
-												  		<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-												  		<?php
-												  	}
-												  ?>
-												</select>
-												<?php endif ?>	
-											</td>
-											<td>
-												<input type="date" name="date" id="date" value="<?php echo $makeOrder[0]["event_date"];?>" class="form-control required" placeholder="attendance date">
-										
-											</td>				
-										</tr>       
-										<?php  
-										}
-										?>
+				<?php 
+					$date1=date('Y-m-d');
+					
+					
+				
+						$count = 0;
+					foreach ($ticketType as $ticketTypes) {
+						$date3=$ticketTypes['ticket_close_on'];
 
-										</tbody>
-									</table>
-								</div>
-
-								<div class="seat-details-info-price" style="border: 0px;">
-									<table class="table pricing-review">
-										<tbody>
-											<tr>
-												
-											</tr>
-										</tbody>
-										<tfoot>
-											<tr>
-												<td></td>
-												<td class="price" id="totalPrice">Total Price KES 0</td>
-											</tr>
-											<tr><td></td>
-
-												<?php if ($ticketTypes['available_tickets'] < 1 
-												|| $ticketTypes['ticket_close_on'] < date("Y-m-d")) : ?>
-
-												<?php else: ?>
-													<td class="price" align="right">
-													<button type="submit"  class="primary-link btn btn-large btn-block btn-primary">  Buy Ticket </button>
-													<!-- onclick="process()" -->
-													</td>
-
-												<?php endif; ?>
+						if(strtotime($date3) <= strtotime($date1)){
+							?>
+						<div class="section-order-details-event-info"><div class="ticket-alert"> <p>Ticket Sale Closed!!</p></div></div>
+						<?php }
+						else{
+						$count++;
+						?>
+							<form method="post" action="reviewOrder" accept-charset="utf-8">
+								<div id="book-table" class="section-order-details-event-info">
+										<div class="seat-details">
+											<h3 class="event-title">Kindly indicate how many tickets you wish to reserve
+											</h3>
 											
-											</tr>
-										</tfoot>
-									</table>
-									<input type="hidden" name="event_date" id="event_date" value="<?php echo $makeOrder[0]["event_date"];?>" class="form-control required" placeholder="event date">
-									<input type="hidden" name="end_date" id="end_date" value="<?php echo $makeOrder[0]["end_date"];?>" class="form-control required" placeholder="end date">	
+											<div class="seat-details-info" style="padding:5px 0px !important">
+												<table class="table number-tickets table table-striped">
+													<thead>
+														<tr>
+															<th style="padding:0 22px 5px;">Ticket</th>
+															<th style="padding:0 22px 5px;">Unit Cost</th>
+															<th style="padding:0 22px 5px;">Quantity</th>
+															<th style="padding:0 22px 5px;">Attendance Date</th>
+														</tr>
+													</thead>
+													<tbody>
+													
+													<tr>
+														<td>
+															<?php echo($ticketTypes['type_name']);?>
+															<input type="hidden" name="" id="<?php echo "ticket_type".$count; ?>" value="<?php echo($ticketTypes['ticket_type']);?>">
+														</td>
+														<td>
+															<?php echo("Ksh. ".$ticketTypes['amount']);?>
+															<input type="hidden" name="" id="<?php echo "amount".$count; ?>" value="<?php echo($ticketTypes['amount']);?>">
+														</td>
+														<td>
+															<?php if ($ticketTypes['available_tickets'] < 1): ?> <!--check available tickets-->
+																	<span class='label bg-danger'>SOLD OUT</span>
+															<?php elseif ($ticketTypes['ticket_close_on'] < date("Y-m-d")): ?> <!--check date closing-->
+																	<span class='label bg-danger'>SOLD OUT</span>
+															<?php else: ?>	
+															<select name="<?php echo $count; ?>" id="<?php echo "select".$count; ?>" onchange="myPrice()">
+															
+															<?php 
+																$tickets_leng = 10;
+																if ($ticketTypes['available_tickets'] < 10) {
+																	$tickets_leng = $ticketTypes['available_tickets'];
+																}
+																for ($i=1; $i <= $tickets_leng; $i++) { ?>
+																	<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+																	<?php
+																}
+															?>
+															</select>
+															<?php endif ?>	
+														</td>
+														<td>
+															<input type="date" name="date" id="date" value="<?php echo $makeOrder[0]["event_date"];?>" class="form-control required" placeholder="attendance date">
+													
+														</td>				
+													</tr>       
+													
+
+													</tbody>
+												</table>
+											</div>
+
+											<div class="seat-details-info-price" style="border: 0px;">
+												<table class="table pricing-review">
+													<tbody>
+														<tr>
+															
+														</tr>
+													</tbody>
+													<tfoot>
+														<tr>
+															<td></td>
+															<td class="price" id="totalPrice">Total Price KES 0</td>
+														</tr>
+														<tr><td></td>
+
+															<?php if ($ticketTypes['available_tickets'] < 1 
+															|| $ticketTypes['ticket_close_on'] < date("Y-m-d")) : ?>
+
+															<?php else: ?>
+																<td class="price" align="right">
+																<button type="submit"  class="primary-link btn btn-large btn-block btn-primary">  Buy Ticket </button>
+																<!-- onclick="process()" -->
+																</td>
+
+															<?php endif; ?>
+														
+														</tr>
+													</tfoot>
+												</table>
+												<input type="hidden" name="event_date" id="event_date" value="<?php echo $makeOrder[0]["event_date"];?>" class="form-control required" placeholder="event date">
+												<input type="hidden" name="end_date" id="end_date" value="<?php echo $makeOrder[0]["end_date"];?>" class="form-control required" placeholder="end date">	
+											</div>
+										</div>
 								</div>
-							</div>
-						</div>
-						</form>
+							</form>
+						<?php } ?> 
+						<?php 
+						}
+					?>
 					</div>
 					</div>
 		</div>

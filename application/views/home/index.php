@@ -4,16 +4,9 @@ if(!empty($homescreen)){
 		?>
 			<div id="deskstop-slider"><a href="<?php echo base_url(); ?>index.php/event?me=<?php echo $value['event_id']; ?>">
   			<img class="mySlides img-responsive" src="<?php echo $value['slider_image']; ?>"></a></div>
-			  <?php 
-							$date = date('Y-m-d');
-							$date2 = $value['event_date'];
-							if(strtotime($date2) >= strtotime($date)){?>
-						
 			<a href="<?php echo base_url(); ?>index.php/event?me=<?php echo $value['event_id']; ?>"><button class="explore">
   			Purchase Ticket</button></a>
-			<?php } else{ ?>
-			no more tickets
-			<?php } ?>
+
   <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
   <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
 

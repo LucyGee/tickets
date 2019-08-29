@@ -67,12 +67,12 @@ if((strtotime($date1) >= strtotime($date2)) && (strtotime($date1) <= strtotime($
 			}
 		}
 }else {
-	echo '<script type="text/javascript">alert("Pick a Day within the range of the Event!");</script>';
+	echo '<script type="text/javascript">alert("Pick a Date within the range of the Event!");</script>';
 	redirect('index.php/event?me='.$event_id, 'refresh');
 }
 }
 else{
-	echo '<script type="text/javascript">alert("Past Date!");</script>';
+	echo '<script type="text/javascript">alert("Ooops! Past Date!!");</script>';
 	redirect('index.php/event?me='.$event_id, 'refresh');
 }
 		//load model to get ticket types

@@ -2992,6 +2992,26 @@ body{
 	margin:0 0 70px;
 }
 
+.section-order-details-event-info .ticket-alert{
+	padding:20px 30px;
+	border-right:1px solid #b3b3b3;
+	border-top:1px solid #b3b3b3;
+	border-bottom:1px solid #b3b3b3;
+	border-left:3px solid #b3b3b3;
+	border-radius:3px;
+	margin:0 0 40px;
+    background-color:#eee;
+}
+
+.section-order-details-event-info .ticket-alert p{
+	margin:0 0 10px;
+	color:#C73E32;
+	font-family: "Montserrat-Regular";
+	font-size:25px;
+	text-align: center;
+	text-transform: uppercase;
+	line-height:normal;
+}
 .section-order-details-event-info .seat-details-info{
 	padding:20px 30px;
 	/*border-right:1px solid #b3b3b3;
