@@ -1268,7 +1268,7 @@ body{
 
 
 .section-event-category{
-	background:rgb(163, 240, 223);
+	background:#edeef4;
 	padding:35px 0 40px;
 }
 
@@ -1397,10 +1397,10 @@ body{
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#db0a5b', endColorstr='#d2527f',GradientType=.5 ); 
 }
 
-.section-event-category .section-content ul li a{
+.section-event-category .section-content a{
 	/*display:block;*/
 	vertical-align: img-top;
-	position:absolute;
+	/*position:absolute;*/
 	color:#f31313;
 	font-size:18px;
 	text-align:center;
@@ -1412,7 +1412,7 @@ body{
 	text-transform:uppercase;
 }
 
-.section-event-category .section-content ul li a span{
+.section-event-category .section-content a span{
 	display:block;
 	height: 26px;
 	width:80%;

@@ -141,8 +141,6 @@
 														<td>
 															<?php if ($ticketTypes['available_tickets'] < 1): ?> <!--check available tickets-->
 																	<span class='label bg-danger'>SOLD OUT</span>
-															<?php elseif ($ticketTypes['ticket_close_on'] < date("Y-m-d")): ?> <!--check date closing-->
-																	<span class='label bg-danger'>SOLD OUT</span>
 															<?php else: ?>	
 															<select name="<?php echo $count; ?>" id="<?php echo "select".$count; ?>" onchange="myPrice()">
 															
