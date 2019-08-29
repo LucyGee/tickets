@@ -51,12 +51,14 @@ class MakeOrder extends CI_Controller {
 		$event_id = " ".$_SESSION['id']."";
 
 		//get post data
-
+$date = date('Y-m-d');
 $date1 =$_POST["date"];
 $date2 = $_POST["event_date"];
 $date3 = $_POST["end_date"];
+if(strtotime($date1) >= strtotime($date)){
+	
 if((strtotime($date1) >= strtotime($date2)) && (strtotime($date1) <= strtotime($date3))){
-   		$sum = 0;
+	$sum = 0;	
 		foreach ($_POST as $key => $value) {
 			if (is_string($value)) {
 				$sum = ($sum + strtotime($value));
@@ -64,16 +66,15 @@ if((strtotime($date1) >= strtotime($date2)) && (strtotime($date1) <= strtotime($
 			redirect('index.php/event?me='.$event_id, 'refresh');
 			}
 		}
-
-		if ($sum < 1) {
-			redirect('index.php/event?me='.$event_id, 'refresh');
-		}
-		
 }else {
 	echo '<script type="text/javascript">alert("Pick a Day within the range of the Event!");</script>';
 	redirect('index.php/event?me='.$event_id, 'refresh');
 }
-
+}
+else{
+	echo '<script type="text/javascript">alert("Past Date!");</script>';
+	redirect('index.php/event?me='.$event_id, 'refresh');
+}
 		//load model to get ticket types
 		$ticketType = $this->Asset_model->get_tickets_type($event_id);
 

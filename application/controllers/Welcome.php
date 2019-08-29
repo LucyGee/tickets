@@ -15,7 +15,6 @@ class Welcome extends CI_Controller {
 		$homeScreen = array(
 			'homescreen' => $this->Asset_model->get_home(),
 			'thumbs' => $this->Asset_model->get_thumbs(),
-			//'ticket_close_on'=>$ticket_close_on,
 			'event_category' => $this->Front_page_model->event_category(),
 			'event_date' => $this->Front_page_model->event_date(),
 		);

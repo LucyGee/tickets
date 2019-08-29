@@ -139,7 +139,7 @@
 												  	if ($ticketTypes['available_tickets'] < 10) {
 												  		$tickets_leng = $ticketTypes['available_tickets'];
 												  	}
-												  	for ($i=0; $i <= $tickets_leng; $i++) { ?>
+												  	for ($i=1; $i <= $tickets_leng; $i++) { ?>
 												  		<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
 												  		<?php
 												  	}
