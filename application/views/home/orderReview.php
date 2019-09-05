@@ -30,11 +30,11 @@
 											
 												 echo $tickets. " Ticket(s)";
 											?>
+
 										</font> for the date 
 										<font color="red"> 
-										<?php 
-										echo $_POST["date"];
-											}
+											<?php }
+										echo $attendance_date;
 										?>
 										</font>
 									</h3>

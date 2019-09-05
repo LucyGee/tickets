@@ -101,7 +101,7 @@
 .owl-carousel .owl-refresh .owl-item {
   display: none;
 }
-.owl-carousel .owl-item {
+.owl-carousel . {
   position: relative;
   min-height: 1px;
   float: left;

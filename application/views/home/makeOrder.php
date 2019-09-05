@@ -8,7 +8,7 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 
 
-<section class="section-page-content">
+	<section class="section-page-content">
 			<div class="container">
 				<div class="row">
 				<div class="col-md-12">
@@ -158,7 +158,7 @@
 															<?php endif ?>	
 														</td>
 														<td>
-															<input type="date" name="date" id="date" value="<?php echo $makeOrder[0]["event_date"];?>" class="form-control required" placeholder="attendance date">
+															<input type="date" name="attendance_date" id="date" value="<?php echo $makeOrder[0]["event_date"];?>" class="form-control required" placeholder="attendance date">
 													
 														</td>				
 													</tr>       
@@ -178,7 +178,7 @@
 													<tfoot>
 														<tr>
 															<td></td>
-															<td class="price" id="totalPrice">Total Price KES 0</td>
+															<td class="price" id="totalPrice">Total Price KES </td>
 														</tr>
 														<tr><td></td>
 
@@ -209,7 +209,7 @@
 					</div>
 					</div>
 		</div>
-		</section>
+	</section>
 
 		<section class="section-page-header">
 			<div class="container">

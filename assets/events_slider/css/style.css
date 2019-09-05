@@ -341,7 +341,7 @@ padding : 190px 0;
 .slider {
 display : block;
 text-align : center;
-vertical-align : middle;
+/*vertical-align : middle;*/
 width : 100%;
 }
 #slider_sec {

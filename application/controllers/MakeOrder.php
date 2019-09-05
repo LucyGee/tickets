@@ -52,9 +52,9 @@ class MakeOrder extends CI_Controller {
 
 		//get post data
 $date = date('Y-m-d');
-$date1 =$_POST["date"];
-$date2 = $_POST["event_date"];
-$date3 = $_POST["end_date"];
+$date1 =$this->input->post('attendance_date');
+$date2 = $this->input->post('event_date');
+$date3 = $this->input->post('end_date');
 if(strtotime($date1) >= strtotime($date)){
 	
 if((strtotime($date1) >= strtotime($date2)) && (strtotime($date1) <= strtotime($date3))){
@@ -75,6 +75,8 @@ else{
 	echo '<script type="text/javascript">alert("Ooops! Past Date!!");</script>';
 	redirect('index.php/event?me='.$event_id, 'refresh');
 }
+		
+		
 		//load model to get ticket types
 		$ticketType = $this->Asset_model->get_tickets_type($event_id);
 
@@ -93,7 +95,10 @@ else{
 			array_push($reviewOrder, $order);
 		}
 
-		$reviewOrder = array('order' => $reviewOrder);
+		$reviewOrder = array(
+			'order' => $reviewOrder,
+			'attendance_date'=> $date1,
+		);
 
 		$this->session->set_userdata('my_order', $reviewOrder);
 
@@ -141,7 +146,9 @@ else{
 							  'email' => $this->input->post('Email'),
 							  'order_id' => $order_id,
 							  'serial_number' => $serial_number,
-							  'transaction_status' => 'PENDING',);
+							  'transaction_status' => 'PENDING',
+							  //'attendance_date'=>$date1,
+						);
 			//send to db
 			$ticketType = $this->Asset_model->make_order($store_db);
 

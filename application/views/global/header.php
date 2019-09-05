@@ -3,7 +3,7 @@
 	<head>
 <link rel="shortcut icon" href="assets/images/logo1.png" type="image/x-icon">
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="description" content="Buy tickets online">
 		<meta name="author" content="iPay Africa">

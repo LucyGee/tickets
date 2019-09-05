@@ -1,31 +1,49 @@
-<?php
-if(!empty($homescreen)){
-	foreach ($homescreen as $value) {
-		?>
-			<div id="deskstop-slider"><a href="<?php echo base_url(); ?>index.php/event?me=<?php echo $value['event_id']; ?>">
-  			<img class="mySlides img-responsive" src="<?php echo $value['slider_image']; ?>"></a></div>
-			<a href="<?php echo base_url(); ?>index.php/event?me=<?php echo $value['event_id']; ?>"><button class="explore">
-  			Purchase Ticket</button></a>
+<section class="section-welcome">
+			<div class="container">
+				<div class="row">
+				
+					<?php
+					if(!empty($homescreen)){
+						foreach ($homescreen as $value) {
+							$date = date('Y-m-d');
+							$date1 = $value['event_date'];
+						if(strtotime($date1) > strtotime($date)) {
+								?>
+								<a href="<?php echo base_url(); ?>index.php/event?me=<?php echo $value['event_id']; ?>"><div><button class="explore">
+								Purchase Ticket</button></div></a>	
+								<div id="deskstop-slider"><a href="<?php echo base_url(); ?>index.php/event?me=<?php echo $value['event_id']; ?>">
+								<img class="mySlides img-responsive" src="<?php echo $value['slider_image']; ?>"></a>
+								<button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+								<button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+								
+							</div>
+							
+							<?php }
+							else{
+								?>
+								<div id="deskstop-slider"><a href="<?php echo base_url(); ?>index.php/event?me=<?php echo $value['event_id']; ?>">
+								<img class="mySlides img-responsive" src="<?php echo $value['slider_image']; ?>"></a>
+								<button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+								<button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+								</div>
+								<?php }
+						}
+					} else {
+						?>
+							<div id="deskstop-slider"><a href="<?php echo base_url('index.php/coming_soon');?>">
+							<img class="mySlides img-responsive" src="assets/images/default.jpg"></a></div>
+							<div class="defaultBanner">
+							Tickets4U allows you to sell tickets online for a festival, concert, conference, movie, play, sports tournament or transport business. 
+							<a href="<?php echo base_url('index.php/coming_soon');?>">Read more</a>
+							</div>
 
-  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
-
-		<?php
-	}
-} else {
-	?>
-		<div id="deskstop-slider"><a href="<?php echo base_url('index.php/coming_soon');?>">
-		<img class="mySlides img-responsive" src="assets/images/default.jpg"></a></div>
-		<div class="defaultBanner">
-		Tickets4U allows you to sell tickets online for a festival, concert, conference, movie, play, sports tournament or transport business. 
-		<a href="<?php echo base_url('index.php/coming_soon');?>">Read more</a>
-        </div>
-
-	<?php
-}
-?>
-  
-
+						<?php
+					}
+					?>
+					
+				</div>	
+			</div>
+</section>
 <style>
 	.view{
 		visibility: hidden !important;
@@ -118,50 +136,56 @@ if(!empty($homescreen)){
 							foreach ($event_category as $category) {
 								if($category['id']=="1"){
 							?>
-								<div class="category-1 col-sm-2">	
-							   		<a href="<?php echo base_url('index.php/Welcome/event_category/'.$category['id']); ?>">
+								<div class="category-1 col-sm-2">
+									<a href="<?php echo base_url('index.php/Welcome/event_category/'.$category['id']); ?>">
+									<div><?php echo $category['category_name']; ?></div>
 									<img src="assets/images/running.png" style="width:100px; height:100px;">
-								 	<div><?php echo $category['category_name']; ?></div></a>
+								 	</a>
 								</div>
 									<?php }
 									elseif($category['id']=="3"){
 									?>
 								<div class="category-1 col-sm-2">	
-							   		<a href="<?php echo base_url('index.php/Welcome/event_category/'.$category['id']); ?>">
+									   <a href="<?php echo base_url('index.php/Welcome/event_category/'.$category['id']); ?>">
+									   <div><?php echo $category['category_name']; ?></div>
 									<img src="assets/images/singer.png" style="width:100px; height:100px;">
-								 	<div><?php echo $category['category_name']; ?></div></a>
+								 	</a>
 								</div>
 									<?php }
 									elseif($category['id']=="4"){
 										?>
 								<div class="category-1 col-sm-2">	
-							   		<a href="<?php echo base_url('index.php/Welcome/event_category/'.$category['id']); ?>">
+									   <a href="<?php echo base_url('index.php/Welcome/event_category/'.$category['id']); ?>">
+									   <div><?php echo $category['category_name']; ?></div>
 									<img src="assets/images/theatre-masks.png" style="width:100px; height:100px;">
-								 	<div><?php echo $category['category_name']; ?></div></a>
+								 	</a>
 								</div>
 									<?php }
 									elseif($category['id']=="5"){
 										?>
 								<div class="category-1 col-sm-2">	
 										<a href="<?php echo base_url('index.php/Welcome/event_category/'.$category['id']); ?>">
+										<div><?php echo $category['category_name']; ?></div>
 									 <img src="assets/images/parties.png" style="width:100px; height:100px;">
-									  <div><?php echo $category['category_name']; ?></div></a>
+									  </a>
 								</div>
 									 <?php }
 									 elseif($category['id']=="6"){
 										 ?>
 								<div class="category-1 col-sm-2">	
 										 <a href="<?php echo base_url('index.php/Welcome/event_category/'.$category['id']); ?>">
+										 <div><?php echo $category['category_name']; ?></div>
 									  <img src="assets/images/communities.png" style="width:100px; height:100px;">
-									   <div><?php echo $category['category_name']; ?></div></a>
+									   </a>
 								</div>
 									  <?php }
 									  else{
 										  ?>
 								<div class="category-1 col-sm-2">	
 										  <a href="<?php echo base_url('index.php/Welcome/event_category/'.$category['id']); ?>">
+										  <div><?php echo $category['category_name']; ?></div>
 									   <img src="assets/images/class.png" style="width:100px; height:100px;">
-										<div><?php echo $category['category_name']; ?></div></a>
+										</a>
 								 </div>
 									   <?php }?>		
 						

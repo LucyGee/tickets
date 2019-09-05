@@ -10,7 +10,7 @@ class Asset_model extends CI_Model{
 	{
 		$this->db->where('events.event_status', 1);
 		$this->db->where('events.end_date >=', date('Y-m-d'));
-		$this->db->select('events.event_title, events.event_venue ,event_Assets.event_id, event_Assets.slider_image, event_Assets.cover_image');
+		$this->db->select('events.event_title, events.event_date, events.event_venue ,event_Assets.event_id, event_Assets.slider_image, event_Assets.cover_image');
 		$this->db->from('events');
 		$this->db->join('event_Assets', 'events.id = event_Assets.event_id' );
       	$this->db->order_by('event_Assets.id', 'asc');
@@ -33,7 +33,7 @@ class Asset_model extends CI_Model{
 	public function get_orderAssets($id)
 	{
 		$this->db->where('events.id', $id);
-		$this->db->select('events.event_date, events.event_title, events.event_venue, events.event_date, event_Assets.cover_image, event_Assets.sponsor_logo, event_Assets.video, event_Assets.event_description, events.end_date');
+		$this->db->select('events.event_title, events.event_venue, events.event_date, event_Assets.cover_image, event_Assets.sponsor_logo, event_Assets.video, event_Assets.event_description, events.end_date');
 		$this->db->from('events');
 		$this->db->join('event_Assets', 'events.id = event_Assets.event_id');
 		$query = $this->db->get();
